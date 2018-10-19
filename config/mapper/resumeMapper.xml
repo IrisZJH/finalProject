@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zjh.project.dao.ResumeDao">
+    <resultMap id="resumeMap" type="Resume">
+        <id property="rid" column="rid"/>
+        <result property="name" column="name"/>
+        <result property="sex" column="sex"/>
+        <result property="age" column="age"/>
+        <result property="job" column="job"/>
+        <result property="experience" column="experience"/>
+        <result property="studyeffort" column="studyeffort"/>
+        <result property="school" column="school"/>
+        <result property="tel" column="tel"/>
+        <result property="email" column="email"/>
+        <result property="content" column="content"/>
+        <result property="specialty" column="specialty"/>
+        <result property="state" column="state"/>
+        <result property="interview" column="interview"/>
+
+
+        <association property="user" javaType="User">
+            <id property="uid" column="uid"/>
+            <result property="uname" column="uname"/>
+            <result property="upasswd" column="upasswd"/>
+            <result property="state" column="state"/>
+        </association>
+
+        <association property="recruit" javaType="Recruit">
+            <id property="reid" column="reid"/>
+            <result property="name" column="name"/>
+            <result property="address" column="address"/>
+            <result property="grantTime" column="grantTime" />
+            <result property="description" column="description"/>
+            <result property="state" column="state"/>
+        </association>
+        <association property="post" javaType="Post">
+            <id property="pid" column="pid"/>
+            <result property="pname" column="pname"/>
+        </association>
+
+
+
+
+    </resultMap>
+
+    <select id="getAllResume" resultMap="resumeMap">
+        select resume.*,recruit.*,post.* from resume,recruit,post where resume.reid=recruit.reid and recruit.pid=post.pid
+    </select>
+    <select id="lookResume" resultMap="resumeMap">
+        select * from resume;
+    </select>
+    <select id="getResumeByUid" parameterType="int" resultMap="resumeMap">
+        select * from resume where uid=#{user.uid}
+    </select>
+    <select id="getResumeByRid" parameterType="int" resultMap="resumeMap">
+        select resume.*,recruit.*,user.* from resume,recruit,user where resume.reid=recruit.reid and resume.uid=user.uid and rid=#{rid}
+    </select>
+    <insert id="addResume" parameterType="Resume">
+        insert into resume(name,sex,age,job,experience,studyeffort,school,tel,email,content,specialty,uid,state,interview)
+        values(#{name},#{sex},#{age},#{job},#{experience},#{studyeffort},#{school},#{tel},#{email},#{content},#{specialty},#{user.uid},4,4)
+    </insert>
+
+    <delete id="deleteResume" parameterType="int">
+        delete from resume where rid=#{rid}
+    </delete>
+    <update id="updateResume" parameterType="Resume">
+        update resume
+        set state=#{state}
+        where rid=#{rid}
+    </update>
+</mapper>
