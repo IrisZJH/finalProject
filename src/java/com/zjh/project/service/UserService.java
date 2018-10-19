@@ -10,5 +10,5 @@ public interface UserService {
     public void addUser(User user);
     public User userInfo(int uid);
     public User getUserByUserName(String userName);
-    public void updateStaate(User user);
+    public void updateState(User user);
 }

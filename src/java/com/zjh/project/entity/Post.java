@@ -39,4 +39,12 @@ public class Post {
         this.pname = pname;
     }
 
+    @Override
+    public String toString() {
+        return "Post{" +
+                "pid=" + pid +
+                ", pname='" + pname + '\'' +
+                ", dept=" + dept +
+                '}';
+    }
 }

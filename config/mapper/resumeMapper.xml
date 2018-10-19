@@ -66,7 +66,47 @@
     </delete>
     <update id="updateResume" parameterType="Resume">
         update resume
-        set state=#{state}
+        <set>
+            <if test="name!=null and name!=''">
+                name=#{name},
+            </if>
+            <if test="sex!=null and sex!=''">
+                sex=#{sex},
+            </if>
+            <if test="age!=null and age!=''">
+                age=#{age},
+            </if>
+            <if test="job!=null and job!=''">
+                job=#{job},
+            </if>
+            <if test="experience!=null and experience!=''">
+                experience=#{experience},
+            </if>
+            <if test="studyeffort!=null and studyeffort!=''">
+                studyeffort=#{studyeffort},
+            </if>
+            <if test="school!=null and school!=''">
+                school=#{school},
+            </if>
+            <if test="tel!=null and tel!=''">
+                tel=#{tel},
+            </if>
+            <if test="email!=null and email!=''">
+                email=#{email},
+            </if>
+            <if test="specialty!=null and specialty!=''">
+                specialty=#{specialty},
+            </if>
+            <if test="state!=null and state!=''">
+                state=#{state},
+            </if>
+            <if test="reid!=null and reid!=''">
+                reid=#{reid},
+            </if>
+            <if test="interview!=null and interview!=''">
+                interview=#{interview}
+            </if>
+        </set>
         where rid=#{rid}
     </update>
 </mapper>

@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
-  User: Mbenben
-  Date: 2017/4/13
-  Time: 3:57
+  User: 18221
+  Date: 2018/10/12
+  Time: 9:16
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -20,15 +20,6 @@
                 if(uname.length==0){
                     $("#span").html("用户名不能为空");
                     count1++;
-                }else{
-                    $.post("confirm.action","uname="+uname,function (date){
-                        if(date=="ok"){
-                            count1=0;
-                        }else {
-                            count1++;
-                        }
-                        $("#span").html(date);
-                    })
                 }
             });
             $("#upasswd").blur(function () {
@@ -65,62 +56,36 @@
         });
     </script>
     <style type="text/css">
-        body {
-            background-color: #CCD8E5
-        }
-        span.STYLE9{
-            font-weight:bold;
-            color:#FCF9C0;
-            font-size: 300%
-        }
-        span.a{
-            font-weight:bold;
-            color: black;
-            font-size: 100%
+        #d{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin:-150px 0 0 -100px;
+            width:200px;
+            height:100px;
         }
 
     </style>
 </head>
 <body style="background-image:url(${request.pageContext.contextPath}/img/p2.jpg); background-size:100%,100%">
+<div id="d">
+    <div style="font: 30px '微软雅黑';margin-left: 30px"> 游客注册</div><br>
+    <div style="width:250px; height:170px; text-align: left; background-color: #C3E5FE;">
+        <form action="/user/register" method="post">
+                        用户名：<br/><input type="text" name="uname" id="uname"/><br/>
+                        <span style="color: red"id="span"></span><br/>
+                        密  码：<br/><input type="password" name="upassword" id="upasswd" /><br/>
+                        <span style="color: red" id="span1"></span><br/>
+                        确认密码：<br/>
+                        <input type="password" name="upasswd1" id="upasswd1"/><br/>
+                        <span style="color: red" id="span2"></span><br/>
 
-<form action="/user/register" method="post">
-    <table width="38%" border="0" align="center" valign="bottom">
-        <tr>
-            <td width="30%" align="right">
-                用户名：
-            </td>
-            <td width="70%" align="left">
-                <input type="text" name="uname" id="uname"/>
-                <span class="a" id="span"></span>
-            </td>
-        </tr>
-        <tr>
-            <td align="right">
-                密  码：
-            </td>
-            <td>
-                <input type="password" name="upassword" id="upasswd" />
-                <span class="a" id="span1"></span>
-            </td>
-        </tr>
-        <tr>
-            <td align="right">
-                密  码：
-            </td>
-            <td>
-                <input type="password" name="upasswd1" id="upasswd1"/>
-                <span class="a" id="span2"></span>
-            </td>
-        </tr>
-        <tr align="center" >
-            <td colspan="2" style="padding-right:80px" >
-                <input type="submit" name="Submit" value="注册">
-                <input type="reset" name="Submit2" value="重置">
-            </td>
-        </tr>
-    </table>
-    ${sessionScope.error1}
-</form>
+                        <input type="submit" name="Submit" value="注册">
+                        <input type="reset" name="Submit2" value="重置">
+            <div style="color: red">${requestScope.str}</div>
+        </form>
+    </div>
+</div>
 
 </body>
 </html>

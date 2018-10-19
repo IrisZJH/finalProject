@@ -19,24 +19,22 @@
 <table align="center" border="2">
     <tr>
         <td>公司名称</td>
-        <td>申请岗位</td>
+        <td>面试岗位</td>
         <td>工作地点</td>
         <td>描述</td>
         <td>发布时间</td>
     </tr>
-    <c:if test="${not empty sessionScope.recruitList}">
-        <c:forEach items="${sessionScope.recruitList}" var="recruit">
-            <tr>
-                <td>${recruit.name}</td>
-                <td>${recruit.post.pname}</td>
-                <td>${recruit.address}</td>
-                <td>${recruit.description}</td>
-                <td><fmt:formatDate value='${recruit.grantTime}' pattern='yyyy-MM-dd'/></td>
-                <td><a href="/resume/seedResume?reid=${recruit.reid}">投递简历</a></td>
-            </tr>
-        </c:forEach>
+    <c:if test="${not empty sessionScope.recruit}">
+
+        <tr>
+            <td>${sessionScope.recruit.name}</td>
+            <td>${sessionScope.recruit.post.pname}</td>
+            <td>${sessionScope.recruit.address}</td>
+            <td>${sessionScope.recruit.description}</td>
+            <td><fmt:formatDate value='${sessionScope.recruit.grantTime}' pattern='yyyy-MM-dd'/></td>
+            <td><a href="/user/confirmInterview">确定面试</a></td>
+        </tr>
     </c:if>
 </table>
-
 </body>
 </html>

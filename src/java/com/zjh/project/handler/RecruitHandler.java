@@ -1,9 +1,6 @@
 package com.zjh.project.handler;
 
-import com.zjh.project.entity.Post;
-import com.zjh.project.entity.Recruit;
-import com.zjh.project.entity.Resume;
-import com.zjh.project.entity.User;
+import com.zjh.project.entity.*;
 import com.zjh.project.service.PostService;
 import com.zjh.project.service.RecruitService;
 import com.zjh.project.service.ResumeService;
@@ -44,12 +41,14 @@ public class RecruitHandler {
         recruitService.addRecruit(recruit);
         return "adminpage";
     }
+    //游客查看招聘信息，如果没有简历则提示创建简历,recruit-state=0/1(1为已删除)
     @RequestMapping("showRecruit")
     public String lookRecruit(HttpSession session,User user,ModelMap map) {
         User user1=(User)session.getAttribute("user");
+        System.out.println("showRecruit"+user1);
         Resume resume4= resumeService.getResumeByUid(user1.getUid());
         if (resume4==null){
-            map.addAttribute("createResume","先创建简历。。");
+            map.addAttribute("createResume","还没有简历，请先创建简历");
             return "userpage";
         }
         List<Recruit> recruitList1 = recruitService.getAll();
@@ -64,5 +63,58 @@ public class RecruitHandler {
         session.setAttribute("postList", postList);
 
         return "showRecruit";
+    }
+
+    /*查看游客已参加面试*/
+    @RequestMapping("showJoinInterview")
+    public String joinResume(HttpSession session) {
+        List<Resume> resumeList =resumeService.getAllResume();
+        List<Resume> resumes=new ArrayList<>();
+        for(int i = 0; resumeList.size()>i; i++) {
+            if (resumeList.get(i).getState()==2 && resumeList.get(i).getInterview()==2) {
+                resumes.add(resumeList.get(i));
+            }
+        }
+        session.setAttribute("resumes", resumes);
+        return "showJoinInterview";
+    }
+    /*录用*/
+    @RequestMapping("hire")
+    public String Hire(int rid,HttpSession session){
+        Resume resume=resumeService.getResumeByRid(rid);
+        session.setAttribute("resume",resume);
+        Recruit recruit=resume.getRecruit();
+        Recruit recruit1=recruitService.getRecruitByReid(recruit.getReid());
+        Post post=recruit1.getPost();
+        session.setAttribute("post",post);
+        Post post1=postService.getPostByPid(post.getPid());
+        Dept dept=post1.getDept();
+        session.setAttribute("dept",dept);
+        return "addEmployee";
+    }
+    /*放弃*/
+    @RequestMapping("giveUp")
+    public String giveUp(int rid,HttpSession session){
+        Resume resume=resumeService.getResumeByRid(rid);
+        resume.setInterview(4);
+        resume.setState(4);
+        resumeService.updateResume(resume);
+        return "adminpage";
+    }
+    //state=0，有效
+    @RequestMapping("getNormalRecruit")
+    public String getAllRecruit(HttpSession session){
+        List<Recruit> recruitList=recruitService.getAll();
+        session.setAttribute("recruitList",recruitList);
+        return "showNormalRecruit";
+    }
+    //state=1,删除
+    @RequestMapping("deleteRecruit")
+    public String updateRecruit(Integer reid, ModelMap map){
+        Recruit recruit=recruitService.getRecruitByReid(reid);
+        recruit.setState(1);
+        recruitService.updateRecruit(recruit);
+        map.addAttribute("deleteRecruit","删除成功");
+        return "forward：getNormalRecruit";
     }
 }

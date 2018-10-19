@@ -38,7 +38,7 @@
             <option value="2">管理员</option>
         </select><br/><br/><br/>
             <div style="color: red">${requestScope.error}</div>
-            <div style="color: red">${requestScope.st}</div>
+            <div style="color: red">${requestScope.str}</div>
             <br/>
             <center>
                 <input type="submit" value="登录" />&nbsp;&nbsp;&nbsp;&nbsp;

@@ -51,7 +51,7 @@
 <div id="box">
     <div align="right">
         <ul>
-            <li><a href="${request.pageContext.contextPath}/login.jsp">退出当前用户</a></li>
+            <li><a href="${request.pageContext.contextPath}/index.jsp">退出当前用户</a></li>
         </ul>
     </div>
     <div id="nav">
@@ -86,9 +86,9 @@
                 <a href="javascript:;">招聘管理</a>
                 <ul>
                     <li><a href="${request.pageContext.contextPath}/addRecruit.jsp">增加招聘信息</a></li>
-                    <li><a href="showResume.action">查看已投简历</a></li>
-                    <li><a href="joinRecruit.action">查看已参加面试</a></li>
-                    <li><a href="getAllRecruit.action">查看招聘信息</a></li>
+                    <li><a href="/resume/showResume">查看已投简历</a></li>
+                    <li><a href="/recruit/showJoinInterview">查看已参加面试</a></li>
+                    <li><a href="/recruit/getNormalRecruit">查看招聘信息</a></li>
                 </ul>
             </li>
             <%--<li onmouseover="display(this)" onmouseout="hide(this)">--%>

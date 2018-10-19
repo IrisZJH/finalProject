@@ -23,6 +23,7 @@
         <td>工作地点</td>
         <td>描述</td>
         <td>发布时间</td>
+        <td>状态</td>
     </tr>
     <c:if test="${not empty sessionScope.recruitList}">
         <c:forEach items="${sessionScope.recruitList}" var="recruit">
@@ -32,10 +33,19 @@
                 <td>${recruit.address}</td>
                 <td>${recruit.description}</td>
                 <td><fmt:formatDate value='${recruit.grantTime}' pattern='yyyy-MM-dd'/></td>
-                <td><a href="/resume/seedResume?reid=${recruit.reid}">投递简历</a></td>
+                <td><a href="/recruit/deleteRecruit?reid=${recruit.reid}">删除</a></td>
             </tr>
         </c:forEach>
     </c:if>
+    <tr>
+        <td colspan="7" align="center">
+            ${deleteRecruit}
+        </td>
+        <td colspan="7" align="center">
+            <a href="${request.pageContext.contextPath}/adminpage.jsp"><input type="button" value="返回"/></a>
+        </td>
+    </tr>
+
 </table>
 
 </body>

@@ -42,7 +42,7 @@
     <insert id="addUser" parameterType="User">
         insert into user(uname,upassword,state) values(#{uname},#{upassword},0)
     </insert>
-    <update id="updateStaate" parameterType="User">
+    <update id="updateState" parameterType="User">
         update user set state=#{state} where  uid=#{uid}
     </update>
 

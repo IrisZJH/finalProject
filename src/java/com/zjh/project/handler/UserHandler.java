@@ -40,7 +40,7 @@ public class UserHandler {
                 Resume resume=resumeService.getResumeByUid(user1.getUid());
                 session.setAttribute("resume",resume);
                 session.setAttribute("user",user1);
-                System.out.println("user");
+                System.out.println("user登陆成功");
                 return "userpage";
             }
             if(user1.getState()==1){
@@ -86,7 +86,69 @@ public class UserHandler {
                 return "index";
             }else {
                 map.addAttribute("str","用户名已存在");
-                return "regist";
+                return "register";
             }
         }
+
+    /*通知面试 Interview 4 没通知，1为通知 2为游客已查看通知*/
+    @RequestMapping("informinterview")
+    public String Informinterview(Integer rid,HttpSession session,ModelMap map){
+        Resume resume= resumeService.getResumeByRid(rid);
+        if(resume.getInterview()==4){
+            resume.setInterview(1);
+            resume.setState(2);
+            System.out.println(resume);
+            resumeService.updateResume(resume);
+            map.addAttribute("Tinform","通知成功");
+        }else {
+            map.addAttribute("Finform","您已经通知过了");
+        }
+        return"adminpage";
+    }
+    /*游客查看面试信息*/
+    @RequestMapping("lookInterview")
+    public String lookInterview(User user,HttpSession session,ModelMap map){
+        User user1=(User)session.getAttribute("user");
+        /* User user3=new User();*/
+        System.out.println("lookInterview,user1:"+user1);
+        Resume resume4= resumeService.getResumeByUid(user1.getUid());
+        System.out.println("lookInterview"+resume4);
+        if (resume4==null){
+            map.addAttribute("createResum","先创建简历。。");
+            return "userpage";
+        }
+        User user2=userService.userInfo(user1.getUid());
+        System.out.println("lookInterview,user2"+user2);
+        Resume resume=user2.getResume();
+        System.out.println("lookInterview,resum"+resume);
+
+        if (resume.getInterview()==1){
+            System.out.println(resume.getRid());
+            Resume resume1=resumeService.getResumeByRid(resume.getRid());
+            System.out.println(resume1);
+            Recruit recruit=resume1.getRecruit();
+            System.out.println("resum:"+recruit);
+            Recruit recruit1=recruitService.getRecruitByReid(recruit.getReid());
+            System.out.println("recruit2"+recruit1);
+            Post post=recruit1.getPost();
+            recruit.setPost(post);
+            session.setAttribute("recruit",recruit);
+        }
+        return "lookInterview";
+    }
+    /*游客确定面试*/
+    @RequestMapping("confirmInterview")
+    public String confirmRecruit(HttpSession session,ModelMap map){
+        User user1=(User)session.getAttribute("user");
+        User user2=userService.userInfo(user1.getUid());
+        Resume resume=user2.getResume();
+        if (resume.getInterview()==1){
+            resume.setInterview(2);
+            resumeService.updateResume(resume);
+            map.addAttribute("s_confirm","确认面试成功");
+        }else {
+            map.addAttribute("f_confirm","已经确认过本次面试");
+        }
+        return "userpage";
+    }
 }

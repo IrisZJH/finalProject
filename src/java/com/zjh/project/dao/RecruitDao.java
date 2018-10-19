@@ -16,4 +16,5 @@ public interface RecruitDao {
     public void deleteRecruit(Recruit recruit);
     public List<Recruit> getAll();
     public Recruit getRecruitByReid(int reid);
+    public List<Recruit> getNormalRecruit();
 }

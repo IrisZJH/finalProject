@@ -36,7 +36,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void updateStaate(User user) {
-        userDao.updateStaate(user);
+    public void updateState(User user) {
+        userDao.updateState(user);
     }
 }

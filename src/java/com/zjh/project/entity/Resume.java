@@ -171,4 +171,28 @@ public class Resume {
     public void setUser(User user) {
         this.user = user;
     }
+
+    @Override
+    public String toString() {
+        return "Resume{" +
+                "rid=" + rid +
+                ", name='" + name + '\'' +
+                ", sex='" + sex + '\'' +
+                ", age=" + age +
+                ", job='" + job + '\'' +
+                ", experience='" + experience + '\'' +
+                ", studyeffort='" + studyeffort + '\'' +
+                ", school='" + school + '\'' +
+                ", tel='" + tel + '\'' +
+                ", email='" + email + '\'' +
+                ", content='" + content + '\'' +
+                ", specialty='" + specialty + '\'' +
+                ", state=" + state +
+                ", reid=" + reid +
+                ", interview=" + interview +
+                ", user=" + user +
+                ", recruit=" + recruit +
+                ", post=" + post +
+                '}';
+    }
 }

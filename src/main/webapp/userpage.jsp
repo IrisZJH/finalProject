@@ -20,22 +20,19 @@
     <table border="0" bgcolor="#e6e1ff">
         <tr>
 
-            <td width="100%" height="20" align="right" valign="top"><a href="index.jsp">退出</a></td>
+            <td width="100%" height="20" align="right" valign="top"><a href="${request.pageContext.contextPath}/index.jsp">退出</a></td>
         </tr>
 
         <tr>
-            <td height="52" valign="bottom"><a href="/recruit/showRecruit"> 查看招聘信息</a></td>
-            <td height="52" valign="bottom" ><a href="lookInterview.action"> 查看面试通知</a></td>
+            <td height="52" ><a href="/recruit/showRecruit"> 查看招聘信息</a></td>
         </tr>
-        <tr>
-            <td height="40">&nbsp;</td>
-        </tr>
+        <tr><td height="52" ><a href="/user/lookInterview"> 查看面试通知</a></td></tr>
 
     </table>
 
 
     <table border="0" cellpadding="0" cellspacing="0" style="width:80%" align="center">
-        <TABLE height="0%">
+        <%--<TABLE height="0%">--%>
             <tr>
                 <c:if test="${empty sessionScope.resume}">
                     <td nowrap align="right" width="9%">您还没有简历</td>

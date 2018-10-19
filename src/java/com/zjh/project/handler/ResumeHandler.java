@@ -12,6 +12,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by 18221 on 2018/10/18.
@@ -26,7 +28,7 @@ public class ResumeHandler {
     @Autowired
     private RecruitService recruitService;
 
-
+//新建简历，state=4,1投递，2管理员已查看通知面试，不录用则返回4，录用了还是2;
     @RequestMapping("addResume")
     public String addResume(Resume resume, HttpSession session) {
         User user = (User) session.getAttribute("user");
@@ -41,20 +43,38 @@ public class ResumeHandler {
         session.setAttribute("user", user1);
         return "userpage";
     }
-    /*投递简历 State简历投递状态 4为不投递，1为已投递*/
+    /*投递简历 State简历投递状态 4为没投递，1为已投递*/
     @RequestMapping("seedResume")
-    public String appRecruit(int reid, HttpSession session, ModelMap map) {
+    public String seedRecruit(int reid, HttpSession session, ModelMap map) {
+        System.out.println("seedResume:"+reid);
         Recruit recruit = recruitService.getRecruitByReid(reid);
         Resume resume1 = (Resume) session.getAttribute("resume");
         if (resume1.getState().equals(1)||resume1.getState().equals(2)) {
             map.addAttribute("seedResumefail", "已经投过简历，不能重复投递");
             return "userpage";
         }else {
+            resume1.setPost(recruit.getPost());
             resume1.setState(1);
             resume1.setReid(reid);
             resumeService.updateResume(resume1);
             map.addAttribute("success", "投递简历成功");
             return "userpage";
         }
+
+    }
+    /*查看游客已投简历state=1*/
+    @RequestMapping("showResume")
+    public String lookResume(HttpSession session) {
+        List<Resume> resumeList =resumeService.getAllResume();
+        List<Resume> resumes=new ArrayList<>();
+        for(int i = 0; resumeList.size()>i; i++) {
+            if (resumeList.get(i).getState()==1) {
+                resumes.add(resumeList.get(i));
+            }
+        }
+        System.out.println("showResume"+resumeList);
+        session.setAttribute("resumes",resumes);
+        System.out.println("showResume"+resumes);
+        return "showResume";
     }
 }

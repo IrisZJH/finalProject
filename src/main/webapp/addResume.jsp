@@ -93,7 +93,7 @@
             <TR>
                 <TD colspan="2" align="center" height="50px">
                     <input name="提交" type="submit" class="button" value="保存"/>　
-                    <a href="userpage"><input type="button" value="返回"></a>
+                    <a href="${pageContext.request.contextPath}/userpage"><input type="button" value="返回"></a>
                 </TD>
             </TR>
         </TABLE>

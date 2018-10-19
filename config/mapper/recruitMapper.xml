@@ -33,6 +33,9 @@
     <select id="getRecruitByReid" resultType="int" resultMap="recruitMap">
         select recruit.*,post.* from recruit,post where recruit.pid=post.pid and reid=#{reid}
     </select>
+    <select id="getNormalRecruit" resultType="int" resultMap="recruitMap">
+        select recruit.*,post.* from recruit,post where recruit.pid=post.pid and state=0
+    </select>
 
 
 </mapper>

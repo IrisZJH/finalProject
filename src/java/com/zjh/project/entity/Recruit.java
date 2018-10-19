@@ -83,4 +83,18 @@ public class Recruit {
     public void setPost(Post post) {
         this.post = post;
     }
+
+    @Override
+    public String toString() {
+        return "Recruit{" +
+                "reid=" + reid +
+                ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", grantTime=" + grantTime +
+                ", description='" + description + '\'' +
+                ", state=" + state +
+                ", post=" + post +
+                ", resumeSet=" + resumeSet +
+                '}';
+    }
 }

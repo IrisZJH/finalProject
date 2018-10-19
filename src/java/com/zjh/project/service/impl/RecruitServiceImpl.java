@@ -45,4 +45,9 @@ public class RecruitServiceImpl implements RecruitService {
         return recruitDao.getRecruitByReid(reid);
     }
 
+    @Override
+    public List<Recruit> getNormalRecruit() {
+        return recruitDao.getNormalRecruit();
+    }
+
 }
