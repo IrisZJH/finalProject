@@ -37,4 +37,9 @@ public class EmployeeServiceImpl implements EmployeeService {
     public List<Employee> getAll() {
         return employeeDao.getAll();
     }
+
+    @Override
+    public List<Employee>getEmployeeByPid(int pid){
+        return employeeDao.getEmployeeByPid(pid);
+    }
 }

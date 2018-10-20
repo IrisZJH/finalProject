@@ -19,4 +19,5 @@ public interface DeptDao {
     public Dept getDeptByUid(int did);
     public Dept getDeptByPid(int pid);
     public Dept getDeptByDId(int did);
+    public Dept getDeptByname(String dname);
 }

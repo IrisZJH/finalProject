@@ -51,4 +51,13 @@ public class Dept {
         this.dname = dname;
     }
 
+    @Override
+    public String toString() {
+        return "Dept{" +
+                "did=" + did +
+                ", dname='" + dname + '\'' +
+                ", post=" + post +
+                ", postSet=" + postSet +
+                '}';
+    }
 }

@@ -69,9 +69,10 @@
         <tr align="center" >
             <td colspan="2" style="padding-right:80px" >
                 <input type="submit" name="Submit" value="添加">
-                <a href="${request.pageContext.contextPath}/adminpage"><input type="button" value="返回"></a>
+                <a href="${request.pageContext.contextPath}/adminpage.jsp"><input type="button" value="返回"></a>
             </td>
         </tr>
     </table>
+</form>
 </body>
 </html>

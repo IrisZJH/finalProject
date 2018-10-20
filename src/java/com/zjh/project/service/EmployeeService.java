@@ -12,4 +12,5 @@ public interface EmployeeService {
     public void updateEmployee(Employee employee);
     public void deleteEmployee(Employee employee);
     public List<Employee> getAll();
+    public List<Employee>getEmployeeByPid(int pid);
 }

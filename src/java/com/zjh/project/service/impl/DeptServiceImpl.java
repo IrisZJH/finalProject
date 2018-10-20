@@ -65,5 +65,9 @@ public class DeptServiceImpl implements DeptService {
     public Dept getDeptByDId(int did) {
         return deptDao.getDeptByDId(did);
     }
+    @Override
+    public Dept getDeptByname(String dname){
+        return deptDao.getDeptByname(dname);
+    }
 
    }

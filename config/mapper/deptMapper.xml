@@ -29,7 +29,10 @@
         select * from dept
     </select>
     <select id="getDeptBydname" parameterType="string" resultMap="deptMap">
-        select dept.*,post.* from dept,post where dept.did=post.did and dept.dname= #{dname}
+        select dept.*,post.* from dept,post where dept.did=post.did and dept.dname=#{dname}
+    </select>
+    <select id="getDeptByname" parameterType="string" resultMap="deptMap">
+        select dept.* from dept where dept.dname=#{dname}
     </select>
 
     <select id="getDeptByPid" parameterType="int" resultMap="deptMap">
