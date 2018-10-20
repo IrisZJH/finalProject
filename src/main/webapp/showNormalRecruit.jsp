@@ -19,6 +19,7 @@
 <table align="center" border="2">
     <tr>
         <td>公司名称</td>
+        <td>申请部门</td>
         <td>申请岗位</td>
         <td>工作地点</td>
         <td>描述</td>
@@ -29,6 +30,7 @@
         <c:forEach items="${sessionScope.recruitList}" var="recruit">
             <tr>
                 <td>${recruit.name}</td>
+                <td>${recruit.dept.dname}</td>
                 <td>${recruit.post.pname}</td>
                 <td>${recruit.address}</td>
                 <td>${recruit.description}</td>

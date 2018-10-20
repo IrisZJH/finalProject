@@ -32,11 +32,11 @@
             <br />
             用户：<input type="text" name="uname" style="height: 15px;width: 120px;"  /><br /><br/>
             密码：<input type="password" name="upassword" style="height: 15px;width: 120px;" /><br /><br/>
-            类别： <select name="state">
-            <option value="0">游客</option>
-            <option value="1">员工</option>
-            <option value="2">管理员</option>
-        </select><br/><br/><br/>
+            <%--类别： <select name="state">--%>
+            <%--<option value="0">游客</option>--%>
+            <%--<option value="1">员工</option>--%>
+            <%--<option value="2">管理员</option>--%>
+        <%--</select><br/><br/><br/>--%>
             <div style="color: red">${requestScope.error}</div>
             <div style="color: red">${requestScope.str}</div>
             <br/>
@@ -44,9 +44,9 @@
                 <input type="submit" value="登录" />&nbsp;&nbsp;&nbsp;&nbsp;
                 <input type="reset"  value="重置" /><br/>
             </center>
-        </form>
+        </form><br/><br/>
         <div style="font-size: 15px;text-align: center;">
-            <a href="register.jsp" style="color: #F10301;">【游客注册】</a>
+            <a href="${request.pageContext.contextPath}/register.jsp" style="color: #F10301;">【游客注册】</a>
         </div>
         <div style="height: 15px;"></div>
     </div>

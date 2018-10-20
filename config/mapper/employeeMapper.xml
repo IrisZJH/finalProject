@@ -50,9 +50,9 @@
         <!--select * from resume;-->
     <!--</select>-->
 
-    <!--<select id="getEmployeeByeid" parameterType="int" resultMap="employeeMap">-->
-        <!--select employee.*,post.*,dept.* from employee,post,dept where employee.pid=post.pid and employee.did=dept.did and eid=#{eid}-->
-    <!--</select>-->
+    <select id="getEmployeeByeid" parameterType="int" resultMap="employeeMap">
+        select employee.*,post.*,dept.* from employee,post,dept where employee.pid=post.pid and employee.did=dept.did and eid=#{eid}
+    </select>
 
     <!--<select id="getEmployeeByPid" parameterType="int" resultMap="employeeMap">-->
         <!--select employee.*,post.* from employee,post where employee.pid=post.pid and post.pid=#{post.id}-->

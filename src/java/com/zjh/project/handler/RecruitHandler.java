@@ -1,10 +1,7 @@
 package com.zjh.project.handler;
 
 import com.zjh.project.entity.*;
-import com.zjh.project.service.PostService;
-import com.zjh.project.service.RecruitService;
-import com.zjh.project.service.ResumeService;
-import com.zjh.project.service.UserService;
+import com.zjh.project.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -27,16 +24,20 @@ public class RecruitHandler {
     private ResumeService resumeService;
     @Autowired
     private RecruitService recruitService;
+    @Autowired
+    private DeptService deptService;
 
 //管理员添加招聘信息
     @RequestMapping("addRecruit")
-    public String addRecruit(Recruit recruit, Integer pid, HttpSession session) {
+    public String addRecruit(Recruit recruit, Integer pid,HttpSession session) {
         System.out.println("addRecruit");
         List<Post> postList=postService.getAll();
         System.out.println("addRecruit"+postList);
         session.setAttribute("postList",postList);
         Post post =postService.getPostByPid(pid);
+        Dept dept = deptService.getDeptByPid(pid);
         recruit.setPost(post);
+        recruit.setDept(dept);
         recruit.setGrantTime(new Date(System.currentTimeMillis()));
         recruitService.addRecruit(recruit);
         return "adminpage";
@@ -61,7 +62,6 @@ public class RecruitHandler {
         session.setAttribute("recruitList", recruitList);
         List<Post> postList = postService.getAll();
         session.setAttribute("postList", postList);
-
         return "showRecruit";
     }
 

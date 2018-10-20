@@ -57,6 +57,7 @@ public class ResumeHandler {
             resume1.setState(1);
             resume1.setReid(reid);
             resumeService.updateResume(resume1);
+            System.out.println("投递简历后"+resume1);
             map.addAttribute("success", "投递简历成功");
             return "userpage";
         }

@@ -6,6 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <title>Title</title>
@@ -59,26 +61,26 @@
             <li onmouseover="display(this)" onmouseout="hide(this)">
                 <a href="javascript:;">部门管理</a>
                 <ul>
-                    <li><a href="addDept.jsp">增加部门</a></li>
-                    <li><a href="getAlldept.action">查看部门</a></li>
-                    <li><a href="getAlldept.action">删除部门</a></li>
-                    <li><a href="getAlldept.action">更改部门</a></li>
+                    <li><a href="${request.pageContext.contextPath}/addDept.jsp">增加部门</a></li>
+                    <li><a href="/dept/getAlldept">查看部门</a></li>
+                    <li><a href="/dept/getAlldept">删除部门</a></li>
+                    <li><a href="/dept/getAlldept">更改部门</a></li>
                 </ul>
             </li>
             <li onmouseover="display(this)" onmouseout="hide(this)">
                 <a href="javascript:;">职位管理</a>
                 <ul>
-                    <li><a href="lookDept.action">增加职位</a></li>
-                    <li><a href="getAllPost.action">查看职位</a></li>
-                    <li><a href="getAllPost.action">删除职位</a></li>
+                    <li><a href="/post/lookDept">增加职位</a></li>
+                    <li><a href="/post/getAllPost">查看职位</a></li>
+                    <li><a href="/post/getAllPost">删除职位</a></li>
                 </ul>
             </li>
             <li onmouseover="display(this)" onmouseout="hide(this)">
                 <a href="javascript:;">员工管理</a>
                 <ul>
-                    <li><a href="getEmployee.action">查看员工</a></li>
-                    <li><a href="getEmployee.action">开除员工</a></li>
-                    <li><a href="getEmployee.action">员工调动</a></li>
+                    <li><a href="/employee/getEmployee">查看员工</a></li>
+                    <li><a href="/employee/getEmployee">开除员工</a></li>
+                    <li><a href="/employee/getEmployee">员工调动</a></li>
                     <li><a href="updateInfoEmp.action">员工信息修改</a></li>
                 </ul>
             </li>

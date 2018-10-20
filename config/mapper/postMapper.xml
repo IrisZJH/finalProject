@@ -33,6 +33,9 @@
         select post.*,dept.* from post,dept where post.did=dept.did and pid=#{pid}
     </select>
 
+    <select id="getPostByDid" parameterType="int" resultMap="postMap">
+        select post.* from post where did=#{did}
+    </select>
     <select id="getPostByPname" parameterType="string" resultMap="postMap">
         select post.*,employee.* from post,employee where
         pname = #{pname}

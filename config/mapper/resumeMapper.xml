@@ -38,10 +38,6 @@
             <id property="pid" column="pid"/>
             <result property="pname" column="pname"/>
         </association>
-
-
-
-
     </resultMap>
 
     <select id="getAllResume" resultMap="resumeMap">

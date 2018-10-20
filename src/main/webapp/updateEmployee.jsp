@@ -43,44 +43,13 @@
             });
     })
 </script>
-<%--<body class="ContentBody">--%>
-<body style="background-image:url(${request.pageContext.contextPath}/img/p2.jpg); background-size:100%,100%">
 
-<%--<table class="test" width="100%" height="30%" border="0" >--%>
-    <%--<!--DWLayoutTable-->--%>
-    <%--<tr>--%>
-        <%--<td width="759" height="55" align="center" valign="bottom">--%>
-            <%--<span class="STYLE9">添加招聘信息</span>--%>
-        <%--</td>--%>
-    <%--</tr>--%>
-    <%--<tr>--%>
-        <%--<td height="40">--%>
-            <%--&nbsp;--%>
-        <%--</td>--%>
-    <%--</tr>--%>
-<%--</table>--%>
-<form action="/recruit/addRecruit" method="post">
-    <table width="80%" border="0" align="center" valign="bottom">
-        <tr>添加招聘信息</tr>
+<body style="background-image:url(${request.pageContext.contextPath}/img/p2.jpg); background-size:100%,100%">
+<form action="/employee/changeEmp" method="post">
+    <table align="center" border="2">
         <tr>
-            <td width="30%" align="right">
-                公司名称：
-            </td>
+            <td>部门</td>
             <td>
-                <input type="text" name="name">
-            </td>
-        </tr>
-        <tr>
-            <td width="50%" align="right">
-                公司地址：
-            </td>
-            <td>
-                <input type="text" name="address">
-            </td>
-        </tr>
-        <tr>
-            <td width="50%" align="right">部门</td>
-            <td width="70%" align="left">
                 <select name="dname" id="dname">
                     <c:if test="${not empty sessionScope.deptList}">
                         <c:forEach items="${sessionScope.deptList}" var="dept" >
@@ -91,22 +60,22 @@
             </td>
         </tr>
         <tr>
-            <td width="50%" align="right">职位</td>
-            <td width="70%" align="left">
+            <td>职位</td>
+            <td>
                 <select id="pname" name="pid">
                 </select>
             </td>
         </tr>
         <tr>
-            <td width="50%" align="right">工作描述</td>
-            <td><input type="text" name="description"></td>
+            <td>员工编号</td>
+            <td><input type="text" value="${sessionScope.employee.eid}" name="eid" readonly> </td>
         </tr>
+        <tr>
+            <td>员工姓名</td>
+            <td><input type="text" value="${sessionScope.employee.ename}" name="ename" readonly> </td>
         </tr>
-        <tr align="center" >
-            <td colspan="2" style="padding-right:80px" >
-                <input type="submit" name="Submit" value="添加">
-                <a href="${request.pageContext.contextPath}/adminpage.jsp"><input type="button" value="返回"></a>
-            </td>
+        <tr>
+            <td colspan="2" align="center"><input type="submit" value="确认调动"></td>
         </tr>
     </table>
 </form>

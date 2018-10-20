@@ -1,13 +1,20 @@
 package com.zjh.project.handler;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.zjh.project.entity.*;
 import com.zjh.project.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 import java.util.Set;
 
@@ -19,8 +26,8 @@ import java.util.Set;
 public class DeptHandler {
     @Autowired
     private DeptService deptService;
-//    @Autowired
-//    private PostService postService;
+    @Autowired
+    private PostService postService;
 
 //增加部门
     @RequestMapping("addDept")
@@ -83,9 +90,37 @@ public class DeptHandler {
     }
 
     @RequestMapping("selectDept")
-    public Set<Post> select(HttpSession session, String dname){
-        Dept dept=deptService.getDeptBydname(dname);
-        return dept.getPostSet();
+    public String select(HttpServletRequest reuqest, HttpSession session, HttpServletResponse response) throws IOException {
+        response.setContentType("text/json; charset=UTF-8");
+        //获取部门ID
+        String dname = reuqest.getParameter("dname");
+        System.out.println("selectDept:"+dname);
+        PrintWriter out = null;
+        try{
+            out = response.getWriter();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        JSONArray array = new JSONArray();
+        JSONObject posts = null;
+        try{
+            //根据部门的名字来查找部门下的所有班级
+            Dept dept = deptService.getDeptBydname(dname);
+            System.out.println(dept);
+            List<Post> postList = postService.getPostByDid(dept.getDid());
+            for(Post post:postList){
+                posts = new JSONObject();
+                posts.put("pid", post.getPid());
+                posts.put("pname",post.getPname());
+                array.add(posts);
+
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        out.print(array.toString());
+        System.out.println(array.toString());
+        return null;
     }
 
 }
