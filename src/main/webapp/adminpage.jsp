@@ -81,7 +81,7 @@
                     <li><a href="/employee/getEmployee">查看员工</a></li>
                     <li><a href="/employee/getEmployee">开除员工</a></li>
                     <li><a href="/employee/getEmployee">员工调动</a></li>
-                    <li><a href="updateInfoEmp.action">员工信息修改</a></li>
+                    <li><a href="/employee/updateEmpInfo">员工信息修改</a></li>
                 </ul>
             </li>
             <li onmouseover="display(this)" onmouseout="hide(this)">
@@ -93,22 +93,22 @@
                     <li><a href="/recruit/getNormalRecruit">查看招聘信息</a></li>
                 </ul>
             </li>
-            <%--<li onmouseover="display(this)" onmouseout="hide(this)">--%>
-                <%--<a href="javascript:;">培训信息</a>--%>
-                <%--<ul>--%>
-                    <%--<li><a href="getAllEmployeeAndAddTrain.action">增加培训</a></li>--%>
-                    <%--<li><a href="getAllTrain.action">查看培训</a></li>--%>
-                <%--</ul>--%>
-            <%--</li>--%>
-            <%--<li onmouseover="display(this)" onmouseout="hide(this)">--%>
-                <%--<a href="javascript:;">奖惩管理</a>--%>
-                <%--<ul>--%>
-                    <%--<li><a href="getAllEmployeeAndaddRwandph.action">增加奖惩</a></li>--%>
-                    <%--<li><a href="getAllRP.action">查看所有奖惩</a></li>--%>
-                    <%--<li><a href="getAllRP.action">修改奖惩</a></li>--%>
-                    <%--<li><a href="getAllRP.action">删除奖惩</a></li>--%>
+            <li onmouseover="display(this)" onmouseout="hide(this)">
+                <a href="javascript:;">培训信息</a>
+                <ul>
+                    <li><a href="/train/getAllEmpAndAddTrain">增加培训</a></li>
+                    <li><a href="/train/getAllTrain">查看培训</a></li>
+                </ul>
+            </li>
+            <li onmouseover="display(this)" onmouseout="hide(this)">
+                <a href="javascript:;">员工奖惩</a>
+                <ul>
+                    <li><a href="getAllEmployeeAndaddRwandph.action">增加奖惩</a></li>
+                    <li><a href="getAllRP.action">查看所有奖惩</a></li>
+                    <li><a href="getAllRP.action">修改奖惩</a></li>
+                    <li><a href="getAllRP.action">删除奖惩</a></li>
+                </ul>
 
-                <%--</ul>--%>
             <%--<li onmouseover="display(this)" onmouseout="hide(this)">--%>
                 <%--<a href="javascript:;">薪资管理</a>--%>
                 <%--<ul>--%>

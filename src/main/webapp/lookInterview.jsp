@@ -19,6 +19,7 @@
 <table align="center" border="2">
     <tr>
         <td>公司名称</td>
+        <td>面试部门</td>
         <td>面试岗位</td>
         <td>工作地点</td>
         <td>描述</td>
@@ -28,6 +29,7 @@
 
         <tr>
             <td>${sessionScope.recruit.name}</td>
+            <td>${sessionScope.dept.dname}</td>
             <td>${sessionScope.recruit.post.pname}</td>
             <td>${sessionScope.recruit.address}</td>
             <td>${sessionScope.recruit.description}</td>

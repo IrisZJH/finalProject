@@ -30,6 +30,7 @@
         <td>Email</td>
         <td>详细经历</td>
         <td>面试职位</td>
+        <td>面试部门</td>
     </tr>
     <c:if test="${not empty sessionScope.resumes}">
         <c:forEach items="${sessionScope.resumes}" var="resume">
@@ -47,6 +48,7 @@
                 <td>${resume.email}</td>
                 <td>${resume.content}</td>
                 <td>${resume.post.pname}</td>
+                <td>${resume.post.dept.dname}</td>
                 <td></td>
                 <td><a href="/user/informinterview?rid=${resume.rid}">通知面试</a></td>
             </tr>

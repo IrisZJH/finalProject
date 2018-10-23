@@ -100,7 +100,10 @@
                 reid=#{reid},
             </if>
             <if test="interview!=null and interview!=''">
-                interview=#{interview}
+                interview=#{interview},
+            </if>
+            <if test="pid!=null and pid!=''">
+                pid=#{pid}
             </if>
         </set>
         where rid=#{rid}

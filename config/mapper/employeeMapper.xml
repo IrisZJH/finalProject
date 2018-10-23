@@ -28,13 +28,13 @@
             <result property="dname" column="dname"/>
         </association>
 
-        <!--<association property="train" javaType="Train">-->
-            <!--<id property="tid" column="tid"/>-->
-            <!--<result property="tname" column="tname"/>-->
-            <!--<result property="begintime" column="begintime"/>-->
-            <!--<result property="endtime" column="endtime"/>-->
-            <!--<result property="content" column="content"/>-->
-        <!--</association>-->
+        <association property="train" javaType="Train">
+            <id property="tid" column="tid"/>
+            <result property="tname" column="tname"/>
+            <result property="begintime" column="begintime"/>
+            <result property="endtime" column="endtime"/>
+            <result property="content" column="content"/>
+        </association>
 
     </resultMap>
 
@@ -54,17 +54,17 @@
         select employee.*,post.*,dept.* from employee,post,dept where employee.pid=post.pid and employee.did=dept.did and eid=#{eid}
     </select>
 
-    <!--<select id="getEmployeeByPid" parameterType="int" resultMap="employeeMap">-->
-        <!--select employee.*,post.* from employee,post where employee.pid=post.pid and post.pid=#{post.id}-->
-    <!--</select>-->
+    <select id="getEmployeeByPid" parameterType="int" resultMap="employeeMap">
+        select employee.*,post.* from employee,post where employee.pid=post.pid and post.pid=#{post.id}
+    </select>
 
     <!--<select id="getEmployeeByuid" parameterType="int" resultMap="employeeMap">-->
         <!--select * from employee where uid=#{user.uid}-->
     <!--</select>-->
 
-    <!--<select id="getEAndUByeid" parameterType="int" resultMap="employeeMap">-->
-        <!--select employee.*,user.* from employee,user where employee.uid=user.uid and employee.eid=#{eid}-->
-    <!--</select>-->
+    <select id="getEAndUByeid" parameterType="int" resultMap="employeeMap">
+        select employee.*,user.* from employee,user where employee.uid=user.uid and employee.eid=#{eid}
+    </select>
 
     <!--<select id="getResumeByRid" parameterType="int" resultMap="employeeMap">-->
         <!--select * from resume where rid=#{rid}-->
@@ -74,23 +74,25 @@
         insert into employee(ename,sex,age,tel,email,state,uid,did,pid)
         values(#{ename},#{sex},#{age},#{tel},#{email},1,#{user.uid},#{dept.did},#{post.pid})
     </insert>
-
+<!--删除员工-->
     <delete id="deleteEmployee" parameterType="int">
         delete from resume where eid=#{eid}
     </delete>
 
-    <!--<update id="updateTrain" parameterType="Employee">-->
-        <!--update employee set tid=#{train.tid} where eid=#{eid}-->
-    <!--</update>-->
+    <update id="updateEandU" parameterType="Employee">
+        update employee set uid=#{user.uid},state=#{state}  where eid=#{eid}
+    </update>
+    <!--为员工添加培训-->
+    <update id="updateTrain" parameterType="Employee">
+        update employee set tid=#{train.tid} where eid=#{eid}
+    </update>
 
-    <!--<update id="updateEandU" parameterType="Employee">-->
-        <!--update employee set uid=#{user.uid},state=#{state}  where eid=#{eid}-->
-    <!--</update>-->
 
-    <!--<update id="updateEmpInfo" parameterType="Employee">-->
-        <!--update employee set ename=#{ename},sex=#{sex},age=#{age},tel=#{tel},email=#{email} where eid=#{eid}-->
-    <!--</update>-->
-
+<!--修改员工基本信息-->
+    <update id="updateEmpInfo" parameterType="Employee">
+        update employee set ename=#{ename},sex=#{sex},age=#{age},tel=#{tel},email=#{email} where eid=#{eid}
+    </update>
+<!--调岗-->
     <update id="updateEmployee" parameterType="Employee">
         update employee set did=#{dept.did},pid=#{post.pid} where eid=#{eid}
     </update>
