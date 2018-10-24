@@ -54,4 +54,9 @@ public class PostServiceImpl implements PostService {
     public Post getPostByPname(String name) {
         return postDao.getPostByPname(name);
     }
-   }
+
+    @Override
+    public List<Post> getPostByDid(int did) {
+        return postDao.getPostByDid(did);
+    }
+}

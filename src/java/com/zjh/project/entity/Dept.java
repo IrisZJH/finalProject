@@ -1,5 +1,6 @@
 package com.zjh.project.entity;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -10,6 +11,7 @@ public class Dept {
     private Integer did;
     private String dname;
     private Post post;
+    private Date createtime;
     private Set<Post> postSet=new HashSet<>();
 
     public Set<Post> getPostSet() {
@@ -51,12 +53,21 @@ public class Dept {
         this.dname = dname;
     }
 
+    public Date getCreatetime() {
+        return createtime;
+    }
+
+    public void setCreatetime(Date createtime) {
+        this.createtime = createtime;
+    }
+
     @Override
     public String toString() {
         return "Dept{" +
                 "did=" + did +
                 ", dname='" + dname + '\'' +
                 ", post=" + post +
+                ", createtime=" + createtime +
                 ", postSet=" + postSet +
                 '}';
     }

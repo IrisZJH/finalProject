@@ -7,7 +7,7 @@ public class User {
     private int uid;
     private String uname;
     private String upassword;
-    private Integer state;
+    private Integer state;//0游客,1员工,2管理员
     private Resume resume;
 
     public Resume getResume() {

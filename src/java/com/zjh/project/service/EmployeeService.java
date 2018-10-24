@@ -13,4 +13,10 @@ public interface EmployeeService {
     public void deleteEmployee(Employee employee);
     public List<Employee> getAll();
     public List<Employee>getEmployeeByPid(int pid);
+    public Employee getEmployeeByeid(int eid);
+    public void updateEandU(Employee employee);
+    public Employee getEAndUByeid(int eid);
+    public void updateEmpInfo(Employee employee);
+    public void updateTrain(Employee employee);
+    public Employee getEmployeeByuid(int uid);
 }

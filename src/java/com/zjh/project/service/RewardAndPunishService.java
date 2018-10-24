@@ -4,6 +4,7 @@ import com.zjh.project.entity.RewardAndPunish;
 import com.zjh.project.entity.Train;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by 18221 on 2018/10/18.
@@ -14,4 +15,5 @@ public interface RewardAndPunishService {
     public void deleteRwandph(int  rpid);
     public List<RewardAndPunish> getAll();
     public RewardAndPunish getRwandphRpid(int rpid);
+    public List<RewardAndPunish> getRwandphByParam(Map<String,Object> map);
 }

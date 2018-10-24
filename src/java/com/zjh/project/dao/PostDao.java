@@ -17,4 +17,5 @@ public interface PostDao {
     public List<Post> getAll();
     public Post getPostByPid(int pid);
     public Post getPostByPname(String name);
+    public List<Post> getPostByDid(int did);
 }

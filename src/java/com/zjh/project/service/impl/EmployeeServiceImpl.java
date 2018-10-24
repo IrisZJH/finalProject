@@ -42,4 +42,36 @@ public class EmployeeServiceImpl implements EmployeeService {
     public List<Employee>getEmployeeByPid(int pid){
         return employeeDao.getEmployeeByPid(pid);
     }
+
+    @Override
+    public Employee getEmployeeByeid(int eid) {
+        return employeeDao.getEmployeeByeid(eid);
+    }
+
+    @Override
+    public void updateEandU(Employee employee) {
+        employeeDao.updateEandU(employee);
+    }
+
+    @Override
+    public Employee getEAndUByeid(int eid) {
+        return employeeDao.getEAndUByeid(eid);
+    }
+
+    @Override
+    public void updateEmpInfo(Employee employee) {
+        employeeDao.updateEmpInfo(employee);
+    }
+
+    @Override
+    public void updateTrain(Employee employee) {
+        employeeDao.updateTrain(employee);
+    }
+
+    @Override
+    public Employee getEmployeeByuid(int uid) {
+        return employeeDao.getEmployeeByuid(uid);
+    }
+
+
 }

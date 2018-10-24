@@ -31,17 +31,20 @@ public class PostHandler {
     @RequestMapping("addPost")
     public String addPost(Post post,String dname, HttpSession session){
         Dept dept=deptService.getDeptBydname(dname);
+        System.out.println("addPost"+dept);
         post.setDept(dept);
         postService.addPost(post);
+        System.out.println("addPost"+post);
         List<Post> postList=postService.getAll();
         session.setAttribute("postList",postList);
         return "adminpage";
     }
-
+//增加职位，先查询部门
     @RequestMapping("lookDept")
     public String lookDept(HttpSession session){
         List<Dept> deptList=deptService.getAll();
         session.setAttribute("deptList",deptList);
+        System.out.println("增加post时查看dept"+deptList);
         return "addPost";
     }
 
@@ -49,7 +52,7 @@ public class PostHandler {
     public String getAllPost(HttpSession session){
         List<Post> postList=postService.getAll();
         session.setAttribute("postList",postList);
-        return "showPost";
+        return "showAllPost";
     }
 
     @RequestMapping("getPost")
@@ -60,18 +63,18 @@ public class PostHandler {
         return "updatePost";
     }
 
-    @RequestMapping("updatePost.action")
+    @RequestMapping("updatePost")
     public String updatePost(HttpSession session,Post post){
         postService.updatePost(post);
         return "forward:getAllPost";
     }
-
+//删除职位
     @RequestMapping("deletePost")
     public String deletePost(HttpSession session, Integer pid, ModelMap map){
         Post post=postService.getPostByPid(pid);
         List<Employee> list=employeeService.getEmployeeByPid(pid);
         if (list.size()>0){
-            map.addAttribute("DPF","该部门下面有人，不能删除");
+            map.addAttribute("DPF","该职位下有人，不能删除");
         }else {
             postService.deletePost(post);
         }

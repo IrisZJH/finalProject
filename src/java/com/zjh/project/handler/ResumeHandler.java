@@ -1,8 +1,10 @@
 package com.zjh.project.handler;
 
+import com.zjh.project.entity.Dept;
 import com.zjh.project.entity.Recruit;
 import com.zjh.project.entity.Resume;
 import com.zjh.project.entity.User;
+import com.zjh.project.service.DeptService;
 import com.zjh.project.service.RecruitService;
 import com.zjh.project.service.ResumeService;
 import com.zjh.project.service.UserService;
@@ -27,6 +29,8 @@ public class ResumeHandler {
     private ResumeService resumeService;
     @Autowired
     private RecruitService recruitService;
+    @Autowired
+    private DeptService deptService;
 
 //新建简历，state=4,1投递，2管理员已查看通知面试，不录用则返回4，录用了还是2;
     @RequestMapping("addResume")
@@ -53,9 +57,13 @@ public class ResumeHandler {
             map.addAttribute("seedResumefail", "已经投过简历，不能重复投递");
             return "userpage";
         }else {
+            Dept dept = deptService.getDeptByPid(recruit.getPost().getPid());
+            System.out.println("seedResum:"+dept);
+            recruit.getPost().setDept(dept);
             resume1.setPost(recruit.getPost());
             resume1.setState(1);
             resume1.setReid(reid);
+            resume1.setPid(recruit.getPost().getPid());
             resumeService.updateResume(resume1);
             System.out.println("投递简历后"+resume1);
             map.addAttribute("success", "投递简历成功");
@@ -70,6 +78,11 @@ public class ResumeHandler {
         List<Resume> resumes=new ArrayList<>();
         for(int i = 0; resumeList.size()>i; i++) {
             if (resumeList.get(i).getState()==1) {
+               int reid =  resumeList.get(i).getRecruit().getReid();
+                System.out.println(reid);
+                Dept dept =deptService.getDeptByDId( recruitService.getRecruitByReid(reid).getDept().getDid());
+                System.out.println(dept);
+                resumeList.get(i).getPost().setDept(dept);
                 resumes.add(resumeList.get(i));
             }
         }

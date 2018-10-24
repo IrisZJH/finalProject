@@ -22,6 +22,7 @@ public class Resume {
     private User user;
     private Recruit recruit;
     private Post post;
+    private Integer pid;
 
     public Integer getInterview() {
         return interview;
@@ -170,6 +171,14 @@ public class Resume {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Integer getPid() {
+        return pid;
+    }
+
+    public void setPid(Integer pid) {
+        this.pid = pid;
     }
 
     @Override

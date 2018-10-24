@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -38,6 +39,7 @@ public class DeptHandler {
         if (dept1!=null){
             map.addAttribute("same","已有该部门不能重复添加");
         }else {
+            dept.setCreatetime(new Date(System.currentTimeMillis()));
             deptService.addDept(dept);
             List<Dept> list1=deptService.getAll();
             System.out.println(list1);
@@ -50,6 +52,7 @@ public class DeptHandler {
     public String getAlldept(HttpSession session){
         List<Dept> deptList=deptService.getAll();
         session.setAttribute("deptList",deptList);
+        System.out.println("getAlldept"+deptList);
         return "showAllDept";
     }
 //查看部门职位
@@ -104,7 +107,7 @@ public class DeptHandler {
         JSONArray array = new JSONArray();
         JSONObject posts = null;
         try{
-            //根据部门的名字来查找部门下的所有班级
+            //根据部门的名字来查找部门下的所有职位
             Dept dept = deptService.getDeptBydname(dname);
             System.out.println(dept);
             List<Post> postList = postService.getPostByDid(dept.getDid());

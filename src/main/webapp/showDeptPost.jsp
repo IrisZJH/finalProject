@@ -28,7 +28,7 @@
             <tr>
                 <td>${postSet.pid}</td>
                 <td>${postSet.pname}</td>
-                <%--<td><a href="getEmp?pid=${postSet.pid}">查看员工</a></td>--%>
+                <td><a href="/employee/getEmp?pid=${postSet.pid}">查看员工</a></td>
             </tr>
         </c:forEach>
     </c:if>

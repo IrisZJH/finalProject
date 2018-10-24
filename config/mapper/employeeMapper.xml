@@ -57,10 +57,10 @@
     <select id="getEmployeeByPid" parameterType="int" resultMap="employeeMap">
         select employee.*,post.* from employee,post where employee.pid=post.pid and post.pid=#{post.id}
     </select>
-
-    <!--<select id="getEmployeeByuid" parameterType="int" resultMap="employeeMap">-->
-        <!--select * from employee where uid=#{user.uid}-->
-    <!--</select>-->
+<!--登陆时根据user_id获取员工信息-->
+    <select id="getEmployeeByuid" parameterType="int" resultMap="employeeMap">
+        select * from employee where uid=#{user.uid}
+    </select>
 
     <select id="getEAndUByeid" parameterType="int" resultMap="employeeMap">
         select employee.*,user.* from employee,user where employee.uid=user.uid and employee.eid=#{eid}

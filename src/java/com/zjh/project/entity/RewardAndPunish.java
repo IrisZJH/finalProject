@@ -51,4 +51,15 @@ public class RewardAndPunish {
     public void setEmployee(Employee employee) {
         this.employee = employee;
     }
+
+    @Override
+    public String toString() {
+        return "RewardAndPunish{" +
+                "rpid=" + rpid +
+                ", money=" + money +
+                ", rptime=" + rptime +
+                ", cause='" + cause + '\'' +
+                ", employee=" + employee +
+                '}';
+    }
 }

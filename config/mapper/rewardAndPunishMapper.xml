@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zjh.project.dao.RewardAndPunishDao">
+    <resultMap id="rewardAndPunishMap" type="RewardAndPunish">
+        <id property="rpid" column="rpid"/>
+        <result property="money" column="money"/>
+        <result property="rptime" column="rptime"/>
+        <result property="cause" column="cause"/>
+
+        <association property="employee" javaType="Employee">
+            <id property="eid" column="eid"/>
+            <result property="ename" column="ename"/>
+            <result property="sex" column="sex"/>
+            <result property="age" column="age"/>
+            <result property="tel" column="tel"/>
+            <result property="email" column="email"/>
+            <result property="state" column="state"/>
+        </association>
+    </resultMap>
+
+    <insert id="addRwandph" parameterType="RewardAndPunish">
+        insert into rewardAndPunish(money,rptime,cause,eid) values(#{money},#{rptime},#{cause},#{employee.eid})
+    </insert>
+
+    <delete id="deleteRwandph" parameterType="int">
+        delete from rewardAndPunish where rpid=#{rpid}
+    </delete>
+
+    <update id="updateRwandph"  parameterType="RewardAndPunish">
+        update rewardAndPunish set money=#{money},rptime=#{rptime},cause=#{cause} where rpid=#{rpid}
+    </update>
+
+    <select id="getAll" resultMap="rewardAndPunishMap" >
+        select employee.*,rewardAndPunish.* from rewardAndPunish,employee where rewardAndPunish.eid=employee.eid
+    </select>
+
+    <select id="getRwandphRpid" parameterType="int" resultMap="rewardAndPunishMap">
+        select employee.*,rewardAndPunish.* from rewardAndPunish,employee where rewardAndPunish.eid=employee.eid and rpid=#{rpid}
+    </select>
+<!--查询几月份的奖罚-->
+    <select id="getRwandphByParam" parameterType="map" resultMap="rewardAndPunishMap">
+        select employee.*,rewardAndPunish.* from rewardAndPunish,employee where rewardAndPunish.eid=employee.eid
+        <if test="eid!=null and eid!=''">
+            and employee.eid=#{eid}
+        </if>
+        <if test="month!=null and month!=''">
+            and rewardAndPunish.rptime like #{month}
+        </if>
+
+    </select>
+</mapper>

@@ -9,6 +9,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,7 +27,9 @@ public class UserHandler {
     @Autowired
     private PostService postService;
     @Autowired
-    RecruitService recruitService;
+    private  RecruitService recruitService;
+    @Autowired
+    private EmployeeService employeeService;
 
 
     @RequestMapping("login")
@@ -45,8 +48,8 @@ public class UserHandler {
             }
             if(user1.getState()==1){
                 session.setAttribute("user",user1);
-//                Employee employee=employeeService.getEmployeeByuid(user1.getUid());
-//                session.setAttribute("employee",employee);
+                Employee employee=employeeService.getEmployeeByuid(user1.getUid());
+                session.setAttribute("employee",employee);
                 System.out.println("employee");
                 return "employeepage";
             }
@@ -60,15 +63,15 @@ public class UserHandler {
                 List<Recruit> recruitList=recruitService.getAll();
                 session.setAttribute("recruitList",recruitList);
 
-//                List<Employee> employeeList1=employeeService.getAll();
-//                List<Employee> employeeList=new ArrayList<>();
-//                for (int i=0;employeeList1.size()>i;i++){
-//                    if (employeeList1.get(i).getState().equals(1)){
-//                        employeeList.add(employeeList1.get(i));
-//
-//                    }
-//                }
-//                session.setAttribute("employeeList",employeeList);
+                List<Employee> employeeList1=employeeService.getAll();
+                List<Employee> employeeList=new ArrayList<>();
+                for (int i=0;employeeList1.size()>i;i++){
+                    if (employeeList1.get(i).getState().equals(1)){
+                        employeeList.add(employeeList1.get(i));
+
+                    }
+                }
+                session.setAttribute("employeeList",employeeList);
                 System.out.println("admin");
                 return "adminpage";
             }
@@ -133,6 +136,8 @@ public class UserHandler {
             Post post=recruit1.getPost();
             recruit.setPost(post);
             session.setAttribute("recruit",recruit);
+            Dept dept =deptService.getDeptByDId( recruitService.getRecruitByReid(recruit1.getReid()).getDept().getDid());
+            session.setAttribute("dept",dept);
         }
         return "lookInterview";
     }

@@ -10,8 +10,8 @@ import java.util.Set;
 public class Train {
     private int tid;
     private String tname;
-    private String  begintime;
-    private String endtime;
+    private Date begintime;
+    private Date endtime;
     private String content;
     private int state;
     private Set<Employee> employeeSet=new HashSet<>();
@@ -35,19 +35,19 @@ public class Train {
         this.tname = tname;
     }
 
-    public String getBegintime() {
+    public Date getBegintime() {
         return begintime;
     }
 
-    public void setBegintime(String begintime) {
+    public void setBegintime(Date begintime) {
         this.begintime = begintime;
     }
 
-    public String getEndtime() {
+    public Date getEndtime() {
         return endtime;
     }
 
-    public void setEndtime(String endtime) {
+    public void setEndtime(Date endtime) {
         this.endtime = endtime;
     }
 

@@ -6,6 +6,7 @@
     <resultMap id="deptMap" type="Dept">
         <id property="did" column="did"/>
         <result property="dname" column="dname"/>
+        <result property="createtime" column="createtime"/>
 
         <collection property="postSet" ofType="Post">
             <id property="pid" column="pid"/>
@@ -14,7 +15,7 @@
     </resultMap>
 
     <insert id="addDept" parameterType="Dept">
-        insert into dept(dname,did) values(#{dname},#{did})
+        insert into dept(dname,did,createtime) values(#{dname},#{did},#{createtime})
     </insert>
 
     <delete id="deleteDept" parameterType="int">

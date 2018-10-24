@@ -7,7 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <title>Title</title>
@@ -21,6 +21,7 @@
     <tr>
         <td>部门编号</td>
         <td>部门名称</td>
+        <td>创建时间</td>
         <td colspan="3" align="center">操作</td>
     </tr>
     <c:if test="${not empty sessionScope.deptList}">
@@ -28,6 +29,7 @@
             <tr>
                 <td>${dept.did}</td>
                 <td>${dept.dname}</td>
+                <td><fmt:formatDate value='${dept.createtime}' pattern='yyyy-MM-dd'/></td>
                 <td><a href="/dept/getDeptInfo?dname=${dept.dname}">查看职位</a></td>
                 <td><a href="/dept/getDept?did=${dept.did}">修改</a></td>
                 <td><a href="/dept/deleteDept?did=${dept.did}">删除</a></td>

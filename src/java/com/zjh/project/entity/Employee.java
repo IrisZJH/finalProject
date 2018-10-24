@@ -13,7 +13,7 @@ public class Employee {
     private Integer state;
     private Dept dept;
     private Post post;
-//    private Train train;
+    private Train train;
     private User user;
 
 
@@ -35,13 +35,13 @@ public class Employee {
         this.post = post;
     }
 
-//    public Train getTrain() {
-//        return train;
-//    }
-//
-//    public void setTrain(Train train) {
-//        this.train = train;
-//    }
+    public Train getTrain() {
+        return train;
+    }
+
+    public void setTrain(Train train) {
+        this.train = train;
+    }
 
     public User getUser() {
         return user;
@@ -105,5 +105,22 @@ public class Employee {
 
     public void setState(Integer state) {
         this.state = state;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "eid=" + eid +
+                ", ename='" + ename + '\'' +
+                ", sex='" + sex + '\'' +
+                ", age=" + age +
+                ", tel='" + tel + '\'' +
+                ", email='" + email + '\'' +
+                ", state=" + state +
+                ", dept=" + dept +
+                ", post=" + post +
+                ", train=" + train +
+                ", user=" + user +
+                '}';
     }
 }

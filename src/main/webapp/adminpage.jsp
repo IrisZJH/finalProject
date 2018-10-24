@@ -103,27 +103,27 @@
             <li onmouseover="display(this)" onmouseout="hide(this)">
                 <a href="javascript:;">员工奖惩</a>
                 <ul>
-                    <li><a href="getAllEmployeeAndaddRwandph.action">增加奖惩</a></li>
-                    <li><a href="getAllRP.action">查看所有奖惩</a></li>
-                    <li><a href="getAllRP.action">修改奖惩</a></li>
-                    <li><a href="getAllRP.action">删除奖惩</a></li>
+                    <li><a href="/rewardAndPunish/getAllEmployeeAndaddRwandph">增加奖惩</a></li>
+                    <li><a href="/rewardAndPunish/getAllRP">查看所有奖惩</a></li>
+                    <li><a href="/rewardAndPunish/getAllRP">修改奖惩</a></li>
+                    <li><a href="/rewardAndPunish/getAllRP">删除奖惩</a></li>
                 </ul>
 
-            <%--<li onmouseover="display(this)" onmouseout="hide(this)">--%>
-                <%--<a href="javascript:;">薪资管理</a>--%>
-                <%--<ul>--%>
-                    <%--<li><a href="getAllSAndE.action">发放薪资</a></li>--%>
-                    <%--<li><a href="getA">查看薪资</a></li>--%>
-                    <%--<li><a href="getDissent.action">查看工资异议</a></li>--%>
+            <li onmouseover="display(this)" onmouseout="hide(this)">
+                <a href="javascript:;">薪资管理</a>
+                <ul>
+                    <li><a href="/salary/getAllEmployeetoSalary">发放薪资</a></li>
+                    <li><a href="/salary/getAll">查看所有员工薪资</a></li>
+                    <li><a href="/dissent/getDissent">查看工资异议</a></li>
 
-                <%--</ul>--%>
-            <%--</li>--%>
-            <%--<li onmouseover="display(this)" onmouseout="hide(this)">--%>
-                <%--<a href="javascript:;">考勤管理</a>--%>
-                <%--<ul>--%>
-                    <%--<li><a href="getAllCheckon.action">查看考勤</a></li>--%>
-                <%--</ul>--%>
-            <%--</li>--%>
+                </ul>
+            </li>
+            <li onmouseover="display(this)" onmouseout="hide(this)">
+                <a href="javascript:;">考勤管理</a>
+                <ul>
+                    <li><a href="/check/getAllCheckon">查看考勤</a></li>
+                </ul>
+            </li>
 
 
         </ul>

@@ -7,7 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <title>Title</title>
@@ -29,8 +29,8 @@
 
             <tr>
                 <td>${trainList.tname}</td>
-                <td>${trainList.begintime}</td>
-                <td>${trainList.endtime}</td>
+                <td><fmt:formatDate value='${trainList.begintime}' pattern='yyyy-MM-dd'/></td>
+                <td><fmt:formatDate value='${trainList.endtime}' pattern='yyyy-MM-dd'/></td>
                 <td>
                     <c:forEach items="${trainList.employeeSet}" var="emp">
                         ${emp.ename}

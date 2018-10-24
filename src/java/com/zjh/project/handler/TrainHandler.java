@@ -35,7 +35,7 @@ public class TrainHandler {
         List<Employee> employeeList1=employeeService.getAll();
         List<Employee> employeeList=new ArrayList<>();
         for (int i=0;employeeList1.size()>i;i++){
-            if (employeeList1.get(i).getState().equals(1)){
+            if (employeeList1.get(i).getState().equals(1)&&employeeList1.get(i).getTrain()==null){
                 employeeList.add(employeeList1.get(i));
 
             }
@@ -69,7 +69,7 @@ public class TrainHandler {
         session.setAttribute("trainList",trainList);
         return "showAllTrain";
     }
-    //员工查看培训信息并选择参加
+    //员工查看自己的培训信息
     @RequestMapping("getTrainFromEmp")
     public String getTrainFromEmp(HttpSession session,Employee employee){
         Employee employee1=(Employee) session.getAttribute("employee");
@@ -78,12 +78,12 @@ public class TrainHandler {
         return "getTrainByEmployee";
     }
 
-    @RequestMapping("updateT")
-    public String updateT(Integer tid){
-        Train train=trainService.getTrainByTid(tid);
-        train.setState(1);
-        trainService.updateTrain(train);
-        return "forward：getTrainFromEmp";
-    }
+//    @RequestMapping("updateT")
+//    public String updateT(Integer tid){
+//        Train train=trainService.getTrainByTid(tid);
+//        train.setState(1);
+//        trainService.updateTrain(train);
+//        return "forward:getTrainFromEmp";
+//    }
 
 }

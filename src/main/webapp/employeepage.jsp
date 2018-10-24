@@ -11,7 +11,7 @@
 <html>
 <head>
     <title>Title</title>
-    <%--<link href="css/index.css" rel="stylesheet" type="text/css" />--%>
+    <script src="${pageContext.request.contextPath}/js/jquery-1.7.2.js"></script>
     <style>
         *{margin:0;padding:0;}
         a{text-decoration:none;color:#666;}
@@ -56,30 +56,28 @@
             <li onmouseover="display(this)" onmouseout="hide(this)">
                 <a href="javascript:;">个人信息</a>
                 <ul>
-                    <li><a href="showOwnInfo.jsp"><span>查看个人信息</span></a></li>
+                    <li><a href="${pageContext.request.contextPath}/showOwnInfo.jsp"><span>查看个人信息</span></a></li>
                 </ul>
             </li>
             <li onmouseover="display(this)" onmouseout="hide(this)">
                 <a href="javascript:;">培训管理</a>
                 <ul>
-                    <li><a href="getTrainFromEmp.action">查看培训</a></li>
+                    <li><a href="/train/getTrainFromEmp">查看培训</a></li>
                 </ul>
             </li>
             <li onmouseover="display(this)" onmouseout="hide(this)">
                 <a href="javascript:;">薪资管理</a>
                 <ul>
-                    <li><a href="getEmployeeSalary.action">查看我的薪资</a></li>
+                    <li><a href="/employee/getEmployeeSalary">查看薪资</a></li>
                 </ul>
             </li>
             <li onmouseover="display(this)" onmouseout="hide(this)">
                 <a href="javascript:;">考勤管理</a>
                 <ul>
-                    <li><a href="showEmpC.action">查看我的考勤记录</a></li>
+                    <li><a href="/check/showEmpCheck">查看考勤记录</a></li>
                 </ul>
             </li>
-            <li><a href="#">公司</a></li>
-            <li><a href="#">公司信息</a></li>
-            <li><a href="login.jsp">退出当前用户</a></li>
+            <li><a href="${pageContext.request.contextPath}/index.jsp">退出</a></li>
         </ul>
     </div>
 
@@ -97,7 +95,7 @@
        cellpadding="0" cellspacing="0">
     <tr>
         <td height="30" align="center"  width="300">
-            <a href="addCheckon.action">上班签到</a>
+            <a href="/check/addCheckon">上班签到</a>
         </td>
     </tr>
 
@@ -106,7 +104,7 @@
        cellpadding="0" cellspacing="0">
     <tr >
         <td height="30" align="center"  width="300">
-            <a href="updateCheckon.action" >下班签到</a>
+            <a href="/check/updateCheckon" >下班签到</a>
         </td>
     </tr>
 

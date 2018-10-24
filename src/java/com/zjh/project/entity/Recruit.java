@@ -14,6 +14,7 @@ public class Recruit {
     private Date grantTime;
     private String description;
     private Integer state;
+    private Dept dept;
     private Post post;
     private Set<Resume> resumeSet=new HashSet<>();
 
@@ -84,6 +85,14 @@ public class Recruit {
         this.post = post;
     }
 
+    public Dept getDept() {
+        return dept;
+    }
+
+    public void setDept(Dept dept) {
+        this.dept = dept;
+    }
+
     @Override
     public String toString() {
         return "Recruit{" +
@@ -93,6 +102,7 @@ public class Recruit {
                 ", grantTime=" + grantTime +
                 ", description='" + description + '\'' +
                 ", state=" + state +
+                ", dept=" + dept +
                 ", post=" + post +
                 ", resumeSet=" + resumeSet +
                 '}';
